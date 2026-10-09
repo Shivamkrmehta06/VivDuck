@@ -1,0 +1,21 @@
+{
+  "title": "Answer a Follow-up Question",
+  "method": "POST",
+  "path": "/sessions/{session_id}/turn",
+  "notes": "Three follow-ups in a fixed order: probe (the weakest rubric point), what_if, trap. The trap is a false claim the AI writes for this student from the question and their answers, checked by a second AI call to be clearly false; the question's stored claim is used only if no claim passes or the AI is unavailable. The session keeps the claim it asked, and the report judges the reply against it. round counts follow-up answers received. The third answer returns done true and question null; the report is then ready.",
+  "request": {
+    "text": "If it isn't sorted, throwing away half the list could throw away the target.",
+    "pasted": false
+  },
+  "response": {
+    "question": "What happens if the value you are looking for appears several times in the list?",
+    "question_type": "what_if",
+    "round": 1,
+    "done": false
+  },
+  "errors": [
+    { "status": 400, "meaning": "Bad input — missing or invalid field", "body": { "error": "request body is invalid" } },
+    { "status": 404, "meaning": "Unknown session", "body": { "error": "session not found" } },
+    { "status": 502, "meaning": "Upstream AI service unavailable", "body": { "error": "The duck is having trouble thinking. Please try again." } }
+  ]
+}
