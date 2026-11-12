@@ -1,0 +1,20 @@
+{
+  "title": "List Questions",
+  "method": "GET",
+  "path": "/questions",
+  "notes": "Questions a student can pick: questions published by teachers (origin \"teacher\", newest first), then the hand-checked sample questions (origin \"sample\"). Rubrics stay on the server; only the question is sent. Students can also answer their own question (see 01, custom_question).",
+  "response": {
+    "questions": [
+      {
+        "id": "binary_search",
+        "title": "Binary search",
+        "subject": "Algorithms",
+        "prompt": "Explain how binary search finds a value in a list. Say why the list must be sorted, how the search range changes at each step, when the search stops, and how fast it is.",
+        "marks": 10,
+        "points": 6,
+        "origin": "sample",
+        "author": null
+      }
+    ]
+  }
+}

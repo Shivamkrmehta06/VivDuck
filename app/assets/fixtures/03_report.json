@@ -1,0 +1,108 @@
+{
+  "title": "Get Report",
+  "method": "GET",
+  "path": "/sessions/{session_id}/report",
+  "notes": "score_before is the rubric grade of the written answer (the mean of grading_runs). score_after re-grades the same rubric using the answer plus the three follow-up answers; points can only go up. Quotes may come from the answer or a follow-up answer. Returns 409 until the third follow-up is answered.",
+  "response": {
+    "session_id": "s_k3f9",
+    "question_id": "binary_search",
+    "title": "Binary search",
+    "question_prompt": "Explain how binary search finds a value in a list. Say why the list must be sorted, how the search range changes at each step, when the search stops, and how fast it is.",
+    "answer_text": "Binary search only works on a sorted list. It looks at the middle element and compares it with the target. If the target is bigger it throws away the left half, otherwise the right half. It keeps halving until it finds the value or there is nothing left, so it takes about log n steps.",
+    "source": "typed",
+    "score_before": 76,
+    "score_after": 85,
+    "grading_runs": [
+      74,
+      78
+    ],
+    "review": {
+      "needs_review": false,
+      "reasons": []
+    },
+    "bloom_reached": "Analyse",
+    "trap_caught": true,
+    "trap_explanation": "The student rejected the claim that binary search works on unsorted lists and explained that order is what lets it discard half.",
+    "weakest_key_point": "It is much faster than linear search on large lists, which checks every element.",
+    "key_points": [
+      {
+        "id": "kp1",
+        "statement": "The list must be sorted, because each comparison relies on order to rule out half the list.",
+        "weight": 3,
+        "status": "solid",
+        "comment": "Covered clearly, including why order matters.",
+        "evidence_quote": "Binary search only works on a sorted list, because if it isn't sorted throwing away half could throw away the target."
+      },
+      {
+        "id": "kp2",
+        "statement": "Each step compares the target with the middle element of the current range.",
+        "weight": 3,
+        "status": "solid",
+        "comment": "Covered clearly.",
+        "evidence_quote": "It looks at the middle element and compares it with the target."
+      },
+      {
+        "id": "kp3",
+        "statement": "The range shrinks by moving the low or high bound past the middle, discarding the half that cannot hold the target.",
+        "weight": 2,
+        "status": "partial",
+        "comment": "Partly covered. Describe how the low and high bounds move.",
+        "evidence_quote": "If the target is bigger it throws away the left half, otherwise the right half."
+      },
+      {
+        "id": "kp4",
+        "statement": "The search stops when the target is found, or when the range is empty (low passes high) and it reports not found.",
+        "weight": 2,
+        "status": "partial",
+        "comment": "Partly covered. Explain both ways the search can end.",
+        "evidence_quote": "It keeps halving until it finds the value or there is nothing left."
+      },
+      {
+        "id": "kp5",
+        "statement": "It runs in O(log n) time because the range halves at every step.",
+        "weight": 2,
+        "status": "solid",
+        "comment": "Covered clearly.",
+        "evidence_quote": "It keeps halving until it finds the value or there is nothing left, so it takes about log n steps."
+      },
+      {
+        "id": "kp6",
+        "statement": "It is much faster than linear search on large lists, which checks every element.",
+        "weight": 1,
+        "status": "missing",
+        "comment": "Not covered. Compare it with linear search.",
+        "evidence_quote": null
+      }
+    ],
+    "strengths": [
+      "Explains that each step compares the target with the middle element.",
+      "Gives the O(log n) cost and links it to halving.",
+      "Explains why the list must be sorted when asked."
+    ],
+    "gaps": [
+      "Does not describe how the low and high bounds move.",
+      "Does not compare binary search with linear search."
+    ],
+    "review_next": [
+      "How low and high are updated after each comparison.",
+      "Linear search versus binary search on large lists."
+    ],
+    "paste_flags": 0
+  },
+  "errors": [
+    {
+      "status": 404,
+      "meaning": "Unknown session",
+      "body": {
+        "error": "session not found"
+      }
+    },
+    {
+      "status": 409,
+      "meaning": "Follow-up questions not finished yet",
+      "body": {
+        "error": "viva is still in progress"
+      }
+    }
+  ]
+}
